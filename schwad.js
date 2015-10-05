@@ -167,14 +167,67 @@ function somethingElseLocal() {
 
 MYAPP.myReturn.push(thisIsAGlobalVariable + somethingElseLocal());
 
-//12.
 
 /*
   1. A new scope is created inside of a function.
   2. A function's scope also has access to any of the scopes from the functions which enclose it.
   3. Functions can only access variables that are in scope (i.e. if you declare variables inside function with "var" they will be hidden")
+  --> to check out scope open up dev tools in chrome; click the "line" and then Scope is shown in dev tools
 
 */
+
+//12. Scope. Variable 'hoisting'
+
+//declare variables at top because they are gonna be hoisted there anyways.
+
+var myFunc = function(){
+  var a,b,c,d
+  return a
+  a=123
+}
+
+//MYAPP.myReturn.push(myFunc());
+
+//13. Closures
+
+function myNewSchwadFunc(){
+  var betterRespectClosures = "for real";
+  function myNewInnerSchwad(){
+    return betterRespectClosures;
+  }
+  myNewInnerSchwad();
+}
+
+//14. Example of a closure
+
+var myClosure = function(){
+  var localVarClosureStyle = "closures are important";
+  return function(){
+    return localVarClosureStyle;
+  }
+
+}
+var myHolder = myClosure();
+MYAPP.myReturn.push(myHolder());
+
+//15. Simple beginnings with modules
+
+var mySchwadModule = function(){
+  var _privateVariable = "hello"
+  var publicVariable = 123
+
+  //this is where you would store the public business and 'getters'
+  return {
+    publicOne: function(){
+      return publicVariable;
+    }
+
+  }
+
+}
+
+var myNewModule = mySchwadModule();
+MYAPP.myReturn.push(myNewModule.publicOne());
 
 ////////////////////////////////////////////////
 
