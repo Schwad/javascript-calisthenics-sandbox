@@ -75,12 +75,37 @@ function suchTime(){
   return "hello there!";
 }
 
-myNewObj = new SchwadConstructor("okay", suchTime());
-myNewObj.timeToChange("it is different now");
+myNewObj = new SchwadConstructor("okay");
 
-MYAPP.myReturn.push(myNewObj);
+MYAPP.myReturn.push(myNewObj.betterProp); //This shows our most recent mod to the constructor at the bottom is pulled up top
 
-//5.
+//5. Constructor prototyping properly
+
+function SchwadConstructor(arg){
+  this.betterProp = arg;
+  this.staticishProp = "I like this constructor";
+  this.betterFunc = function(){return "I am a function!"};
+  var better = "constructor";
+}
+MYAPP.myReturn.push(SchwadConstructor.prototype.toString());
+
+//6. Building instance object with constructor to show prototypes same as constructor's
+
+var myTestingObject = new SchwadConstructor("bring it on");
+console.log(" #6: just to be sure here it is " + myTestingObject.__proto__);
+MYAPP.myReturn.push(myTestingObject.__proto__);
+
+//7. If you build a constructor, you can alter its prototype
+
+var checkThisOut = new SchwadConstructor("my arg");
+SchwadConstructor.prototype.cackle = function(){
+  return "HUEHUEHEUEHUE";
+}
+
+MYAPP.myReturn.push(checkThisOut.cackle());
+
+//8.
+
 
 ////////////////////////////////////////////////
 
