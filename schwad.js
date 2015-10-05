@@ -7,16 +7,29 @@ MYAPP.myReturn = [];
 console.log(MYAPP.myReturn);
 MYAPP.mySubSpace = {};
 MYAPP.otherSubSpace = {};
-MYAPP.renderResult = function(input, index){
+MYAPP.renderResult = function(input, index, myBoolean){
  var myDiv = document.getElementById('my-display');
+ var mySpecialDiv = document.getElementById('my-current');
  var newElement = document.createElement('p');
     if (typeof input == "object"){
+      if (myBoolean === true){
+        newElement.innerHTML = (index + 1) + ". " + JSON.stringify(input)
+        mySpecialDiv.appendChild(newElement);
+        console.log(input)
+      } else {
         newElement.innerHTML = (index + 1) + ". " + JSON.stringify(input)
         myDiv.appendChild(newElement);
         console.log(input)
+      }
     } else {
-        newElement.innerHTML =  (index + 1) + ". " + input.toString();
-        myDiv.appendChild(newElement);
+        if (myBoolean === true){
+          newElement.innerHTML = (index + 1) + ". " + JSON.stringify(input)
+          mySpecialDiv.appendChild(newElement);
+          console.log(input)
+        } else {
+          newElement.innerHTML =  (index + 1) + ". " + input.toString();
+          myDiv.appendChild(newElement);
+        }
     }
 }
 
@@ -48,7 +61,7 @@ mexico.__proto__ = Country;
 
 MYAPP.myReturn.push(mexico.__proto__);
 
-//4. Using constructors to set prototypes
+//4. Using constructors
 
 function SchwadConstructor(arg1, func1){
   this.myProp = arg1;
@@ -72,9 +85,13 @@ MYAPP.myReturn.push(myNewObj);
 ////////////////////////////////////////////////
 
 // functional chunk of code to render below; if it won't post gives warning and chunks to console log..
-
 for(i = 0; i < MYAPP.myReturn.length; i++){
-   MYAPP.renderResult(MYAPP.myReturn[i], i);
+   if (i === (MYAPP.myReturn.length - 1)) {
+    console.log("debug time : " + (MYAPP.myReturn.length - 1));
+     MYAPP.renderResult(MYAPP.myReturn[i], i, true);
+   } else {
+     MYAPP.renderResult(MYAPP.myReturn[i], i, false);
+   }
 }
 
 // execute
