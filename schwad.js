@@ -3,10 +3,15 @@
 // 1. Set up global namespace object
 
 var MYAPP = {};
+
 MYAPP.myReturn = [];
+
 console.log(MYAPP.myReturn);
+
 MYAPP.mySubSpace = {};
+
 MYAPP.otherSubSpace = {};
+
 MYAPP.renderResult = function(input, index, myBoolean){
  var myDiv = document.getElementById('my-display');
  var mySpecialDiv = document.getElementById('my-current');
@@ -118,7 +123,3 @@ for(i = 0; i < MYAPP.myReturn.length; i++){
      MYAPP.renderResult(MYAPP.myReturn[i], i, false);
    }
 }
-
-// execute
-//console.log(typeof //MYAPP.mySubSpace.myProp.__proto__);
-//MYAPP.renderResult(america.army);
