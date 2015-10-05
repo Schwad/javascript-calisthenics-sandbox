@@ -235,7 +235,7 @@ MYAPP.myReturn.push((function(myArgument){ return myArgument;})("SO FAST!"))
 
 //17. Bigger with getter and setter wrapped in an IIFE
 
-var myIifeModule = (function(){
+var MyIifeModule = (function(){
   var _privateOne = 15843;
   var _privateFunc = function(){
     console.log("this is private-ish...");
@@ -255,8 +255,8 @@ var myIifeModule = (function(){
   }
 })()
 
-myIifeModule.setPublicTwo("not-nick")
-MYAPP.myReturn.push(myIifeModule.showPublicTwo());
+MyIifeModule.setPublicTwo("not-nick")
+MYAPP.myReturn.push(MyIifeModule.showPublicTwo());
 
 /*
   Notes on module pattern;
@@ -266,8 +266,6 @@ MYAPP.myReturn.push(myIifeModule.showPublicTwo());
   4. main advantage is you only want to expose public namespace to the public
 
 */
-
-//18.
 
 /* notes on options:
     -->pure constructor creation
@@ -286,8 +284,44 @@ MYAPP.myReturn.push(myIifeModule.showPublicTwo());
 
 */
 
+//18. Dependency injection in and out of file
 
+var MySecondModule = (function(MyIifeModule, MyOtherFileModule){
+  var displayOtherData = MyIifeModule.showPublicOne();
+  var _myOtherPrivate = "such secrecy";
+  return {
+    objectOne: function(){
+      return displayOtherData;
+    },
+    alterOtherModule: function(val){
+      return MyIifeModule.setPublicTwo(val);
+    },
+    showOtherModuleOther: function(){
+      return MyIifeModule.showPublicTwo();
+    },
+    showFromOtherFile: function(){
+      return MyOtherFileModule.showPubOne();
+    },
+    alterFromOtherFile: function(val){
+      return MyOtherFileModule.alterPubOne(val);
+    }
+
+  }
+
+})(MyIifeModule, MyOtherFileModule);
+
+MySecondModule.alterOtherModule("nested power of iife dependencies");
+MYAPP.myReturn.push(MySecondModule.showOtherModuleOther());
+
+//19. show other module from other file. put master module at bottom of css page
+
+MYAPP.myReturn.push(MySecondModule.showFromOtherFile());
 ////////////////////////////////////////////////
+
+//20. Alter from other file
+
+MySecondModule.alterFromOtherFile("what's up");
+MYAPP.myReturn.push(MySecondModule.showFromOtherFile());
 
 // functional chunk of code to render below; if it won't post gives warning and chunks to console log..
 for(i = 0; i < MYAPP.myReturn.length; i++){
