@@ -1,10 +1,21 @@
 var MyOtherFileModule = (function(){
-  var pubOne = 1;
+
+  // public variables
+
+  var getpubOne = 1;
+  }
   var pubTwo = 2;
   var pubThree = 3;
+
+  // public methods
+
+  // private functions and variables
+
   var _privateOne = 4;
   var _privateTwo = 5;
 
+
+  //return and reveal
   return {
     showPubOne: function(){
       return pubOne;
