@@ -229,6 +229,64 @@ var mySchwadModule = function(){
 var myNewModule = mySchwadModule();
 MYAPP.myReturn.push(myNewModule.publicOne());
 
+//16. Immediately invoked function expression (IIFE)
+
+MYAPP.myReturn.push((function(myArgument){ return myArgument;})("SO FAST!"))
+
+//17. Bigger with getter and setter wrapped in an IIFE
+
+var myIifeModule = (function(){
+  var _privateOne = 15843;
+  var _privateFunc = function(){
+    console.log("this is private-ish...");
+  }
+  var myPublicOne = 453342;
+  var myPublicTwo = "nick";
+  return {
+    showPublicOne: function(){
+      return myPublicOne;
+    },
+    setPublicTwo: function(val){
+      return myPublicTwo = val;
+    },
+    showPublicTwo: function(){
+      return myPublicTwo;
+    }
+  }
+})()
+
+myIifeModule.setPublicTwo("not-nick")
+MYAPP.myReturn.push(myIifeModule.showPublicTwo());
+
+/*
+  Notes on module pattern;
+  1. Wrapped in an Immediately Invoked Function Expression
+  2. Return an object which contains getters and setters for what you want to be made public
+  3. By convention, use underscore for private names
+  4. main advantage is you only want to expose public namespace to the public
+
+*/
+
+//18.
+
+/* notes on options:
+    -->pure constructor creation
+    -->set methods and attributes on 'prototype' with inheritance
+    -->build a pure literal object and then pass it to Object.create( myObj1 ) to create a new instance
+    --> MVC Object Literal
+    --> Revealing Module in Immediately Invoked Function Expression (which puts only part public and part private)
+
+    1. initial simple - object pattern
+    2. private is Revealing Module
+    3. More than one of same object, constructor function. err on side of using prototypes
+    4. use init method
+
+    (after done w/ this vcs jump right into ajax and api calls and stuff)
+
+
+*/
+
+
 ////////////////////////////////////////////////
 
 // functional chunk of code to render below; if it won't post gives warning and chunks to console log..
