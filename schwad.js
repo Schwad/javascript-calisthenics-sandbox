@@ -243,6 +243,14 @@ function somethingElseLocal() {
 
 MYAPP.myReturn.push(thisIsAGlobalVariable + somethingElseLocal());
 
+//12.
+
+/*
+  1. A new scope is created inside of a function.
+  2. A function's scope also has access to any of the scopes from the functions which enclose it.
+  3. Functions can only access variables that are in scope (i.e. if you declare variables inside function with "var" they will be hidden")
+
+*/
 
 ////////////////////////////////////////////////
 
