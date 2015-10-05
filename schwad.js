@@ -232,7 +232,16 @@ function TestPerformance(){
 
 //TestPerformance();
 
-//11.
+//11. global vs local
+
+var thisIsAGlobalVariable = 1515;
+
+function somethingElseLocal() {
+  var thisOneIsLocal = 314325;
+  return thisOneIsLocal;
+}
+
+MYAPP.myReturn.push(thisIsAGlobalVariable + somethingElseLocal());
 
 
 ////////////////////////////////////////////////
