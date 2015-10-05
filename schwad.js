@@ -109,7 +109,45 @@ SchwadConstructor.prototype.cackle = function(){
 
 MYAPP.myReturn.push(checkThisOut.cackle());
 
-//8.
+//8. Practice Run
+
+//traditional first
+
+function PlymouthUniSearch(){
+    this.yearAtUni = "todo";
+    this.degreeStudying = "todo";
+    this.currentMarks = "todo";
+    this.address = "todo";
+    this.mobilePhone = "todo";
+    this.emailAddress = "todo";
+  }
+
+var nickSchwaderer = new PlymouthUniSearch();
+PlymouthUniSearch.prototype.catchphrase = "";
+
+nickSchwaderer.catchphrase = "Pure business";
+
+MYAPP.myReturn.push(nickSchwaderer.catchphrase);
+
+// creative now
+
+var exeterUniSearch = {
+  yearAtUni: "todo",
+  degreeStudying: "todo",
+  currentMarks: "todo",
+  address: "todo",
+  mobilePhone: "todo",
+  emailAddress: "todo",
+}
+
+var johnSmith = Object.create( exeterUniSearch );
+
+johnSmith.favoriteTeam = "Exeter City FC";
+
+exeterUniSearch.rivalTeam = "Plymouth Argyle";
+
+MYAPP.myReturn.push(johnSmith.rivalTeam);
+
 
 
 ////////////////////////////////////////////////
@@ -117,7 +155,6 @@ MYAPP.myReturn.push(checkThisOut.cackle());
 // functional chunk of code to render below; if it won't post gives warning and chunks to console log..
 for(i = 0; i < MYAPP.myReturn.length; i++){
    if (i === (MYAPP.myReturn.length - 1)) {
-    console.log("debug time : " + (MYAPP.myReturn.length - 1));
      MYAPP.renderResult(MYAPP.myReturn[i], i, true);
    } else {
      MYAPP.renderResult(MYAPP.myReturn[i], i, false);
